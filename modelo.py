@@ -19,11 +19,17 @@ class Program:
     def give_likes(self):
         self._likes += 1
 
+    def __str__(self):
+        return f"{self._name} - {self.year} - {self._likes}"
+
 
 class Movie(Program):
     def __init__(self, name, year, duration):
         super().__init__(name, year)
         self.duration = duration
+
+    def __str__(self):
+        return f"{self._name} - {self.year} - {self.duration} - {self._likes}"
 
 
 class Serie(Program):
@@ -31,13 +37,18 @@ class Serie(Program):
         super().__init__(name, year)
         self.seasons = seasons
 
+    def __str__(self):
+        return f"{self._name} - {self.year} - {self.seasons} - {self._likes}"
+
 
 avengers = Movie("avengers: infinity war", 2018, 160)
-avengers.give_likes()
-print(f"{avengers.name} - {avengers.duration} - {avengers.likes}")
-
-
 atlanta = Serie("atlanta", 2018, 2)
+
+avengers.give_likes()
 atlanta.give_likes()
 atlanta.give_likes()
-print(f"{atlanta.name} - {atlanta.seasons} - {atlanta.likes}")
+
+movies_n_series = [avengers, atlanta]
+
+for item in movies_n_series:
+    print(item)
