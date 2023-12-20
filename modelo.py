@@ -46,12 +46,14 @@ class Playlist:
         self.name = name
         self._programs = programs
 
+    def __getitem__(self, p_item):
+        return self._programs[p_item]
+
     @property
     def listing(self):
         return self._programs
 
-    @property
-    def size(self):
+    def __len__(self):
         return len(self._programs)
 
 
@@ -76,7 +78,9 @@ scary.give_likes()
 movies_n_series = [avengers, atlanta, daredevil, scary]
 weekend_playlist = Playlist("Weekend", movies_n_series)
 
-print(f"Size of the playlist: {len(weekend_playlist.listing)}")
+print(f"Size of the playlist: {len(weekend_playlist)}")
 
-for item in weekend_playlist.listing:
+print(weekend_playlist[0])
+
+for item in weekend_playlist:
     print(item)
