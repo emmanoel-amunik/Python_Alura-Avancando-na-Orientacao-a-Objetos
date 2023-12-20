@@ -41,14 +41,42 @@ class Serie(Program):
         return f"{self._name} - {self.year} - {self.seasons} - {self._likes}"
 
 
+class Playlist:
+    def __init__(self, name, programs):
+        self.name = name
+        self._programs = programs
+
+    @property
+    def listing(self):
+        return self._programs
+
+    @property
+    def size(self):
+        return len(self._programs)
+
+
 avengers = Movie("avengers: infinity war", 2018, 160)
 atlanta = Serie("atlanta", 2018, 2)
+scary = Movie("Scary Movie", 1999, 100)
+daredevil = Serie("daredevil", 2016, 2)
 
+
+daredevil.give_likes()
+daredevil.give_likes()
 avengers.give_likes()
 atlanta.give_likes()
 atlanta.give_likes()
+atlanta.give_likes()
+atlanta.give_likes()
+scary.give_likes()
+scary.give_likes()
+scary.give_likes()
 
-movies_n_series = [avengers, atlanta]
 
-for item in movies_n_series:
+movies_n_series = [avengers, atlanta, daredevil, scary]
+weekend_playlist = Playlist("Weekend", movies_n_series)
+
+print(f"Size of the playlist: {len(weekend_playlist.listing)}")
+
+for item in weekend_playlist.listing:
     print(item)
